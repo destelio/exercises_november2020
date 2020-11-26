@@ -8,6 +8,8 @@ Please find attached all the solutions corresponding to the technical task sent 
 
 
 I attach the following:
+
+
 Q1
 stelios_1
 this was tested with PyTest
