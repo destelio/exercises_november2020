@@ -1,0 +1,30 @@
+CAP Theorem
+
+The CAP theorem states that a distributed database system has to make a tradeoff between Consistency and Availability when a Partition occurs.
+
+A (modern) distributed database system is bound to have partitions in a real-world system due to connection failures or other reasons. 
+Therefore, partition tolerance is a an essential property that cannot be really overlooked when building a system. 
+Hence, a distributed system will either choose between giving up on Consistency or Availability but not on Partition Tolerance.
+
+
+Sacrifying Availability
+----------------------- 
+MongoDB is a NoSQL database that stores data in one or more primary nodes. It stores data in JSON files.
+When a primary node becomes inaccessible, for whatever reason, then one of the secondary nodes has to become the primary one. 
+Until a new primary is elected amongst the secondary nodes available, the system stays unavailable to the user, in making any new write queries. 
+Therefore, the MongoDB system behaves as a Consistent system and compromises on Availability during a partition. 
+Hence, in this particular situation, Availablity is indeed sacrificed.
+
+
+Sacrifying Consistency
+----------------------
+To give you an example on this, let's see how Cassandra database works. Cassandra is regarded as a highly available database for the features stated below.
+
+Cassandra consists of multiple nodes in the system. Each node can accept a read or write request from the user. 
+At the same time, Cassandra maintains multiple replicas of data in separate nodes. 
+In the case of Cassandra, there are no primary nodes; hence under this architecture, there are multiple points of failure instead of a single point.
+
+A situation can occur where a partition occurs and the replica does not get an updated copy of the data. 
+In such a situation the replica nodes will still be available to the user but the data will be inconsistent.
+Hence, in this particular situation, Consistency is indeed sacrificed.
+ 
